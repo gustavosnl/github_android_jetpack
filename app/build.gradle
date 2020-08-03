@@ -66,8 +66,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
 
     //DI
-    implementation "org.koin:koin-core:2.1.6"
-    implementation "org.koin:koin-android:2.0.1"
+    implementation "org.koin:koin-core:$version_koin"
+    implementation "org.koin:koin-android-viewmodel:$version_koin"
+    implementation "org.koin:koin-android:$version_koin"
 
     //NETWORK
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"

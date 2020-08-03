@@ -16,6 +16,7 @@ buildscript {
         version_fragment = "1.2.5"
         version_glide = "4.8.0"
         version_timber = "4.7.1"
+        version_koin = "2.1.6"
     }
     repositories {
         google()
