@@ -26,6 +26,7 @@ object AppModule {
                 .client(get())
                 .build()
         }
+
         single {
             Moshi.Builder()
                 .add(KotlinJsonAdapterFactory())

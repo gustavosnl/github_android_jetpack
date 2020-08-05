@@ -1,27 +1,37 @@
 package com.glima.githubrepolist
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.glima.domain.repository.GithubRepoRepository
+import com.glima.domain.business.model.Repository
+import com.glima.domain.business.usecase.ListGitReposUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
-import org.koin.core.get
 
-class GithubListViewModel : ViewModel(), KoinComponent {
-    val repository: GithubRepoRepository = get()
+class GithubListViewModel(
+    private val searchRepositoriesUseCase: ListGitReposUseCase
+) : ViewModel() {
+
+    private val INITIAL_SEARCH_TERM = "kotlin"
     private val job = Job()
-
     private val scope = CoroutineScope(job + Dispatchers.Main)
 
+    private val _repositories = MutableLiveData<List<Repository>>()
+
+    val repositories: LiveData<List<Repository>>
+        get() = _repositories
+
+
     init {
-        fetchRepositories()
+        searchRepositories(INITIAL_SEARCH_TERM)
     }
 
-    private fun fetchRepositories() {
+    fun searchRepositories(searchTerm: String) {
         scope.launch {
-            repository.searchRepositoriesByQuery("kotlin")
+            val searchResult = searchRepositoriesUseCase.executeAsync(searchTerm)
+            _repositories.value = searchResult.repositories
         }
     }
 
