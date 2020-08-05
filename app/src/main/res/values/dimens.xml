@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="avatar_size">80dp</dimen>
+    <dimen name="repository_item_padding">16dp</dimen>
 </resources>
