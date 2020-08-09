@@ -2,14 +2,15 @@ package com.glima.githubrepolist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.glima.domain.business.model.Repository
 import com.glima.githubrepolist.RepositoryAdapter.RepositoryViewHolder
 import com.glima.githubrepolist.databinding.ItemRepositoryBinding
 
-class RepositoryAdapter : ListAdapter<Repository, RepositoryViewHolder>(RepositoryDiffUtil()) {
+class RepositoryAdapter :
+    PagingDataAdapter<Repository, RepositoryViewHolder>(RepositoryDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
         val binding = ItemRepositoryBinding.inflate(LayoutInflater.from(parent.context))
@@ -29,7 +30,7 @@ class RepositoryAdapter : ListAdapter<Repository, RepositoryViewHolder>(Reposito
     }
 }
 
-class RepositoryDiffUtil() : DiffUtil.ItemCallback<Repository>() {
+class RepositoryDiffUtil : DiffUtil.ItemCallback<Repository>() {
     override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean {
         return oldItem === newItem
     }
