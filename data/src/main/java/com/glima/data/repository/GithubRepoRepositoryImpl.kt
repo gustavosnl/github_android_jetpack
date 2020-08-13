@@ -11,12 +11,13 @@ import com.glima.domain.business.model.Repository
 import com.glima.domain.repository.GithubRepoRepository
 import com.glima.domain.repository.SearchParams
 import kotlinx.coroutines.flow.Flow
+import timber.log.Timber
 
 class GithubRepoRepositoryImpl(private val service: RepositoryService) :
     GithubRepoRepository {
     override suspend fun searchRepositoriesByQuery(query: SearchParams): Flow<PagingData<Repository>> {
         return Pager(
-            config = PagingConfig(pageSize = 11),
+            config = PagingConfig(pageSize = 20),
             pagingSourceFactory = { RepositoryPagingSource(service, query) }
         ).flow
     }
@@ -31,7 +32,7 @@ class RepositoryPagingSource(
     PagingSource<Int, Repository>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Repository> {
         val position = params.key ?: STARTING_PAGE
-        Log.d("RepositoryPagingSource", "position: $position")
+        Timber.log("position: $position")
         return try {
             val result =
                 service.fetchRepositoriesByQuery(
