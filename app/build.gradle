@@ -77,16 +77,19 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
-    implementation "com.squareup.okhttp3:okhttp:4.7.2"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+    implementation "com.squareup.okhttp3:okhttp:$version_okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$version_okhttp"
 
     implementation "com.github.bumptech.glide:glide:$version_glide"
+    implementation "androidx.paging:paging-runtime:$version_paging"
 
+    implementation "com.jakewharton.timber:timber:$version_timber"
 
-
-    testImplementation "org.koin:koin-test:2.1.6"
 
     testImplementation 'junit:junit:4.13'
+    testImplementation "org.koin:koin-test:2.1.6"
+
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 

@@ -11,92 +11,77 @@
     </data>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/repository_item_padding">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:repositoryImgUrl="@{repository.owner.avatar}"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/ownerName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="@dimen/repository_item_padding">
+            android:layout_marginStart="16dp"
+            android:text="@{repository.owner.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:text="gustavosnl" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="@dimen/avatar_size"
-                android:layout_height="@dimen/avatar_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:repositoryImgUrl="@{repository.owner.avatar}"
-                tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/repositoryName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{repository.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/ownerName"
+            tools:text="/github_starred_kotlin_repos" />
 
-            <TextView
-                android:id="@+id/ownerName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@{repository.owner.name}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                tools:text="gustavosnl" />
 
-            <TextView
-                android:id="@+id/repositoryName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@{repository.name}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/ownerName"
-                app:layout_constraintTop_toBottomOf="@+id/ownerName"
-                tools:text="/github_starred_kotlin_repos" />
+        <TextView
+            android:id="@+id/starCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="@{String.valueOf(repository.stars)}"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@+id/forkCount"
+            app:layout_constraintStart_toEndOf="@+id/forkCount"
+            app:layout_constraintTop_toTopOf="@+id/forkCount"
+            tools:text="9999+" />
 
-            <ImageView
-                android:id="@+id/starIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_star"
-                app:layout_constraintBottom_toBottomOf="@+id/forkIcon"
-                app:layout_constraintStart_toEndOf="@+id/forkCount"
-                app:layout_constraintTop_toTopOf="@+id/forkIcon" />
+        <TextView
+            android:id="@+id/forkCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="@{String.valueOf(repository.forks)}"
+            app:drawableStartCompat="@drawable/ic_fork"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/repositoryName"
+            tools:text="9999+" />
 
-            <TextView
-                android:id="@+id/starCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{String.valueOf(repository.stars)}"
-                app:layout_constraintBottom_toBottomOf="@+id/starIcon"
-                app:layout_constraintStart_toEndOf="@+id/starIcon"
-                app:layout_constraintTop_toTopOf="@+id/starIcon"
-                tools:text="9999+" />
-
-            <ImageView
-                android:id="@+id/forkIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_fork"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="@+id/repositoryName" />
-
-            <TextView
-                android:id="@+id/forkCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@{String.valueOf(repository.forks)}"
-                app:layout_constraintBottom_toBottomOf="@+id/forkIcon"
-                app:layout_constraintStart_toEndOf="@+id/forkIcon"
-                app:layout_constraintTop_toTopOf="@+id/forkIcon"
-                tools:text="9999+" />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@{repository.description}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                tools:text="Este projeto tem como finalidade, listar os repositórios mais favoritados da linguagem kotlin" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@{repository.description}"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:text="Este projeto tem como finalidade, listar os repositórios mais favoritados da linguagem kotlin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

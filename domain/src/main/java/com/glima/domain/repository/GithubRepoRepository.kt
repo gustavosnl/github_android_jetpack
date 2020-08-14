@@ -1,8 +1,10 @@
 package com.glima.domain.repository
 
-import com.glima.domain.business.model.RepositorySearchResult
+import androidx.paging.PagingData
+import com.glima.domain.business.model.Repository
+import kotlinx.coroutines.flow.Flow
 
 interface GithubRepoRepository {
 
-    suspend fun searchRepositoriesByQuery(query: String): RepositorySearchResult
+    suspend fun searchRepositoriesByQuery(query: SearchParams): Flow<PagingData<Repository>>
 }
