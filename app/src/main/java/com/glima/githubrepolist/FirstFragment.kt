@@ -1,5 +1,9 @@
 package com.glima.githubrepolist
 
+//        adapter.withLoadStateHeaderAndFooter(
+//            header =,
+//            footer =
+//        )
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +29,9 @@ class FirstFragment : Fragment() {
         val binding = FragmentFirstBinding.inflate(inflater)
         val adapter = RepositoryAdapter()
 
-        binding.repositories.adapter = adapter
+        binding.repositories.adapter = adapter.withLoadStateFooter(
+            footer = RepoLoadingStateAdapter(adapter::retry)
+        )
 
         job?.cancel()
         job = lifecycleScope.launch {

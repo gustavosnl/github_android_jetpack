@@ -1,6 +1,5 @@
 package com.glima.data.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -28,11 +27,10 @@ private const val STARTING_PAGE = 1
 class RepositoryPagingSource(
     private val service: RepositoryService,
     private val searchParams: SearchParams
-) :
-    PagingSource<Int, Repository>() {
+) : PagingSource<Int, Repository>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Repository> {
         val position = params.key ?: STARTING_PAGE
-        Timber.log("position: $position")
+        Timber.d("position: $position")
         return try {
             val result =
                 service.fetchRepositoriesByQuery(
@@ -49,7 +47,7 @@ class RepositoryPagingSource(
             )
 
         } catch (e: Exception) {
-            Log.d("RepositoryPagingSource", "error: ${e.message}")
+            Timber.e("error: ${e.message}")
             LoadResult.Error(e)
         }
     }

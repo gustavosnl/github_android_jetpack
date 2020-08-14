@@ -26,6 +26,10 @@ class GithubListViewModel(
         return newResult
     }
 
+    suspend fun retry() {
+        searchRepositories("kotlin")
+    }
+
 }
 
 
