@@ -1,17 +1,19 @@
-package com.glima.data.dao
+package com.glima.data.database
 
-import androidx.lifecycle.LiveData
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.glima.data.domain.RepositoryEntity
 
 @Dao
 interface RepositoryDAO {
     @Query("SELECT * FROM github_repository")
-    fun getAll(): LiveData<List<RepositoryEntity>>
+    fun getAll(): PagingSource<Int, RepositoryEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg users: RepositoryEntity)
+    fun insertAll(users: List<RepositoryEntity>)
+
+    @Query("DELETE FROM github_repository")
+    suspend fun clearRepositories()
 }

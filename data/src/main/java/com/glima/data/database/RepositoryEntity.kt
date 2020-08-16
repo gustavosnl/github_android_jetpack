@@ -7,15 +7,16 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "github_repository")
 data class RepositoryEntity(
     @PrimaryKey
-    val id: Int,
+    val id: Long,
     val name: String,
     val forks: Int,
     val stars: Int,
     val description: String?,
-    @Embedded val owner: Owner
+    @Embedded val owner: OwnerEntity
 )
 
-data class Owner(
-    val name: String,
+@Entity
+data class OwnerEntity(
+    val owner: String,
     val avatar: String
 )
