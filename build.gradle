@@ -12,13 +12,13 @@ buildscript {
         version_navigation = '1.0.0'
         version_constraint_layout = "2.0.0-rc1"
         version_lifecycle_extensions = "2.2.0"
-        version_room = "2.2.5"
+        version_room = "2.3.0-alpha01"
         version_appcompat = "1.2.0"
         version_fragment = "1.2.5"
         version_glide = "4.8.0"
         version_timber = "4.7.1"
         version_koin = "2.1.6"
-        version_paging = "3.0.0-alpha04"
+        version_paging = "3.0.0-alpha03"
     }
     repositories {
         google()

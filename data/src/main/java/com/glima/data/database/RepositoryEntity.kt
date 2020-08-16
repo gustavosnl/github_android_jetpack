@@ -1,4 +1,4 @@
-package com.glima.data.domain
+package com.glima.data.database
 
 import androidx.room.Embedded
 import androidx.room.Entity
