@@ -1,8 +1,8 @@
 package com.glima.data.di
 
 import androidx.room.Room
-import com.glima.data.GithubRepositoryDatabase
-import com.glima.data.dao.RepositoryDAO
+import com.glima.data.database.GithubRepositoryDatabase
+import com.glima.data.database.RepositoryDAO
 import com.glima.data.repository.GithubRepoRepositoryImpl
 import com.glima.domain.repository.GithubRepoRepository
 import org.koin.android.ext.koin.androidContext
@@ -27,7 +27,10 @@ object DataModule {
         }
 
         single<GithubRepoRepository> {
-            GithubRepoRepositoryImpl(get())
+            GithubRepoRepositoryImpl(
+                service = get(),
+                database = get()
+            )
         }
     }
 }
