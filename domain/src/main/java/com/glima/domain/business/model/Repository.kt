@@ -1,7 +1,7 @@
 package com.glima.domain.business.model
 
 data class Repository(
-    val id: Int,
+    val id: Long,
     val name: String,
     val forks: Int,
     val stars: Int,

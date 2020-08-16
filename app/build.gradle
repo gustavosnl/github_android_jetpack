@@ -44,6 +44,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
 }
 
@@ -79,6 +80,11 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
     implementation "com.squareup.okhttp3:okhttp:$version_okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$version_okhttp"
+
+//    ROOM DATABASE
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
 
     implementation "com.github.bumptech.glide:glide:$version_glide"
     implementation "androidx.paging:paging-runtime:$version_paging"
