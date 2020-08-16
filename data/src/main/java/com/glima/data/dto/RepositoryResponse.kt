@@ -3,7 +3,7 @@ package com.glima.data.dto
 import com.squareup.moshi.Json
 
 data class RepositoryResponse(
-    @Json(name = "id") val id: Int,
+    @Json(name = "id") val id: Long,
     @Json(name = "name") val name: String,
     @Json(name = "forks_count") val forks: Int,
     @Json(name = "stargazers_count") val stars: Int,
